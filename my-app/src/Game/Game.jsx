@@ -125,7 +125,7 @@ function Game() {
           <p>TỔNG SỐ BÀN CHƠI:{countAll}</p>
           <h1 className="text-light">BẠN ĐÃ : {kqWin}</h1>
         </div>
-        <button onClick={RotateXucXac}>PLAY GAME</button>
+        <button onClick={result != "" ? RotateXucXac : null}>PLAY GAME</button>
       </div>
     </div>
   );
