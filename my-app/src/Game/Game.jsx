@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ResultPopup from "./ResultPopup";
 
 function Game() {
-  const { url_1, url_2, url_3 } = useSelector((state) => {
+  const [result, setResult] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [kqWin, setKqWin] = useState("WIN");
+  const [countAll, setcountAll] = useState(0);
+  const { url_1, url_2, url_3, count } = useSelector((state) => {
     const url_1 = state.changeXucXac1.url_1;
     const url_2 = state.changeXucXac2.url_2;
     const url_3 = state.changeXucXac3.url_3;
+    const count = state.countWin.count;
 
-    return { url_1, url_2, url_3 };
+    return { url_1, url_2, url_3, count };
   });
   const dispatch = useDispatch();
   function randonNumber() {
@@ -62,6 +68,19 @@ function Game() {
     // } else if ((number3 = 6)) {
     //   dispatch({ type: "Xuc3_6" });
     // }
+    setcountAll(countAll + 1);
+    let ketquaWin = number1 + number2 + number3;
+    if (ketquaWin % 2 === 0 && result == "TÀI") {
+      setKqWin("WIN");
+      dispatch({ type: "increment" });
+    } else if (ketquaWin % 2 === 1 && result == "XỈU") {
+      setKqWin("WIN");
+      dispatch({ type: "increment" });
+    } else {
+      setKqWin("LOSE");
+      dispatch({ type: "decrement" });
+    }
+    setIsOpen(true);
   };
 
   return (
@@ -69,7 +88,14 @@ function Game() {
       <h1 className="text-center p-5 font">GAME ĐỔ XÚC XẮC</h1>
       <div className="row text-center row-beside">
         <div className="col-3">
-          <h2 className="big-size">TÀI</h2>
+          <button
+            className="big-size"
+            onClick={() => {
+              setResult("TÀI");
+            }}
+          >
+            TÀI
+          </button>
         </div>
         <div className="col-6">
           <img src={url_1} className="size-img"></img>
@@ -77,14 +103,32 @@ function Game() {
           <img src={url_3} className="size-img"></img>
         </div>
         <div className="col-3">
-          <h2 className="big-size">XỈU</h2>
+          <button
+            className="big-size"
+            onClick={() => {
+              setResult("XỈU");
+            }}
+          >
+            XỈU
+          </button>
         </div>
       </div>
       <div className="text-center">
+        <button>50.000đ</button>
+        <button>100.000đ</button>
+        <button>200.000đ</button>
+        <button>500.000đ</button>
+      </div>
+      <ResultPopup
+        kqWin={kqWin}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+      <div className="text-center mt-3">
         <div>
-          <h2>BẠN CHỌN: </h2>
-          <p>SỐ BÀN THẮNG:</p>
-          <p>TỔNG SỐ BÀN CHƠI:</p>
+          <h2>BẠN CHỌN: {result} </h2>
+          <p>SỐ BÀN THẮNG: {count}</p>
+          <p>TỔNG SỐ BÀN CHƠI:{countAll}</p>
         </div>
         <button onClick={RotateXucXac}>PLAY GAME</button>
       </div>

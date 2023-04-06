@@ -3,17 +3,17 @@ import { configureStore } from "@reduxjs/toolkit";
 function changeXucXac1(state = { url_1: "./img/1.png" }, action) {
   switch (action.type) {
     case "numberXuc1": {
-      if ((action.payload = 1)) {
+      if (action.payload === 1) {
         return { ...state, url_1: "./img/1.png" };
-      } else if ((action.payload = 2)) {
+      } else if (action.payload === 2) {
         return { ...state, url_1: "./img/2.png" };
-      } else if ((action.payload = 3)) {
+      } else if (action.payload === 3) {
         return { ...state, url_1: "./img/3.png" };
-      } else if ((action.payload = 4)) {
+      } else if (action.payload === 4) {
         return { ...state, url_1: "./img/4.png" };
-      } else if ((action.payload = 5)) {
+      } else if (action.payload === 5) {
         return { ...state, url_1: "./img/5.png" };
-      } else if ((action.payload = 6)) {
+      } else if (action.payload === 6) {
         return { ...state, url_1: "./img/6.png" };
       }
     }
@@ -35,18 +35,18 @@ function changeXucXac1(state = { url_1: "./img/1.png" }, action) {
 function changeXucXac2(state = { url_2: "./img/1.png" }, action) {
   switch (action.type) {
     case "numberXuc2": {
-      if ((action.payload = 1)) {
-        return { ...state, url_1: "./img/1.png" };
-      } else if ((action.payload = 2)) {
-        return { ...state, url_1: "./img/2.png" };
-      } else if ((action.payload = 3)) {
-        return { ...state, url_1: "./img/3.png" };
-      } else if ((action.payload = 4)) {
-        return { ...state, url_1: "./img/4.png" };
-      } else if ((action.payload = 5)) {
-        return { ...state, url_1: "./img/5.png" };
-      } else if ((action.payload = 6)) {
-        return { ...state, url_1: "./img/6.png" };
+      if (action.payload === 1) {
+        return { ...state, url_2: "./img/1.png" };
+      } else if (action.payload === 2) {
+        return { ...state, url_2: "./img/2.png" };
+      } else if (action.payload === 3) {
+        return { ...state, url_2: "./img/3.png" };
+      } else if (action.payload === 4) {
+        return { ...state, url_2: "./img/4.png" };
+      } else if (action.payload === 5) {
+        return { ...state, url_2: "./img/5.png" };
+      } else if (action.payload === 6) {
+        return { ...state, url_2: "./img/6.png" };
       }
     }
 
@@ -70,21 +70,31 @@ function changeXucXac2(state = { url_2: "./img/1.png" }, action) {
       return state;
   }
 }
+function countWin(state = { count: 0 }, action) {
+  switch (action.type) {
+    case "increment":
+      return { ...state, count: state.count + 1 };
+    case "decrement":
+      return { ...state, count: state.count - 1 };
+    default:
+      return state;
+  }
+}
 function changeXucXac3(state = { url_3: "./img/1.png" }, action) {
   switch (action.type) {
     case "numberXuc3": {
-      if ((action.payload = 1)) {
-        return { ...state, url_1: "./img/1.png" };
-      } else if ((action.payload = 2)) {
-        return { ...state, url_1: "./img/2.png" };
-      } else if ((action.payload = 3)) {
-        return { ...state, url_1: "./img/3.png" };
-      } else if ((action.payload = 4)) {
-        return { ...state, url_1: "./img/4.png" };
-      } else if ((action.payload = 5)) {
-        return { ...state, url_1: "./img/5.png" };
-      } else if ((action.payload = 6)) {
-        return { ...state, url_1: "./img/6.png" };
+      if (action.payload === 1) {
+        return { ...state, url_3: "./img/1.png" };
+      } else if (action.payload === 2) {
+        return { ...state, url_3: "./img/2.png" };
+      } else if (action.payload === 3) {
+        return { ...state, url_3: "./img/3.png" };
+      } else if (action.payload === 4) {
+        return { ...state, url_3: "./img/4.png" };
+      } else if (action.payload === 5) {
+        return { ...state, url_3: "./img/5.png" };
+      } else if (action.payload === 6) {
+        return { ...state, url_3: "./img/6.png" };
       }
     }
     // case "Xuc3_1":
@@ -111,6 +121,7 @@ const store = configureStore({
     changeXucXac1: changeXucXac1,
     changeXucXac2: changeXucXac2,
     changeXucXac3: changeXucXac3,
+    countWin: countWin,
   },
 });
 
