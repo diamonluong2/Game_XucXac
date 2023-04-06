@@ -12,7 +12,7 @@ function ResultPopup({ isOpen, onClose, kqWin }) {
         style={{ display: "block" }}
         tabIndex={-1}
       >
-        <div className="modal-dialog modal-background">
+        <div className="modal-dialog modal-sm modal-background">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="text-center">Kết quả:</h5>

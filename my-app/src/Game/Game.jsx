@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import ResultPopup from "./ResultPopup";
 
 function Game() {
   const [result, setResult] = useState("");
@@ -119,16 +118,12 @@ function Game() {
         <button>200.000đ</button>
         <button>500.000đ</button>
       </div>
-      <ResultPopup
-        kqWin={kqWin}
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
       <div className="text-center mt-3">
         <div>
           <h2>BẠN CHỌN: {result} </h2>
           <p>SỐ BÀN THẮNG: {count}</p>
           <p>TỔNG SỐ BÀN CHƠI:{countAll}</p>
+          <h1 className="text-light">BẠN ĐÃ : {kqWin}</h1>
         </div>
         <button onClick={RotateXucXac}>PLAY GAME</button>
       </div>
